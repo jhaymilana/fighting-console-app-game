@@ -2,9 +2,11 @@
 
 using Classes;
 
+// Game Start Up text
 Console.WriteLine("Welcome to Realm of Legends");
 Console.WriteLine();
 
+// Prompts user name and creates new hero
 try 
 { 
     Console.WriteLine("To start please enter a name:");
@@ -20,4 +22,4 @@ catch (ArgumentException)
     throw new ArgumentException("Name cannot be empty.");
 }
 
-Game.Start();
+Game.Start(); // Main Menu

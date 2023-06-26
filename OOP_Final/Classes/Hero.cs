@@ -34,7 +34,7 @@ namespace Classes
         // Methods
         public void GetStats() // Returns Hero Name and Base Stats (+ Item Power)
         {
-            Console.WriteLine($"{HeroName} Stats:");
+            Console.WriteLine($"{HeroName}'s Stats:");
             Console.WriteLine($"HP: {Health}");
             Console.WriteLine($"Strength: {Strength} (+{Weapon.ItemPower})");
             Console.WriteLine($"Defence: {Defence} (+{ Armor.ItemPower})");

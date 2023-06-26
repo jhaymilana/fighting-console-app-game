@@ -23,9 +23,10 @@ namespace Classes
         public int CurrentHealth
         {
             get { return _currentHealth; }
+            // Minimum value of current health is 0 (hero loses) and max health will always be hero's base health
+            // Min max documentation: https://learn.microsoft.com/en-us/dotnet/api/system.math.max?view=net-7.0
             set { _currentHealth = Math.Min(Math.Max(value, 0), _health); }
         }
-
 
         // Methods
 

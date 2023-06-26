@@ -10,7 +10,7 @@ namespace Classes
     {
         // Fields
         private static Hero _hero;
-        // Hard coded monsters
+        // Hard coded values
         private static readonly HashSet<Monster> _monsters = new HashSet<Monster>
         {
             new Monster("Goblin", 10, 5, 35),
@@ -46,7 +46,7 @@ namespace Classes
             _hero = hero;
             Console.WriteLine($"New hero {newHeroName} has been created.");
         }
-        // New Weapon, Armor, and Monster methods aren't used as I have hard coded them for testing code
+        // New Weapon, Armor, and Monster methods aren't used as I have hard coded them for testing code (can be used to create new item drops)
         public static void NewMonster(string newMonsterName, int str, int def, int hp) // Creates a new monster and adds it to a collection
         {
             Monster newMonster = new Monster(newMonsterName, str, def, hp);
@@ -71,22 +71,21 @@ namespace Classes
         public static void ChangeEquippedWeapon()
         {
             Console.WriteLine("Available Weapons:");
-            // Display the available weapons for the player to choose
-            int index = 1;
-            foreach (Weapon weapon in _weaponInventory)
+            int index = 0;
+            foreach (Weapon weapon in _weaponInventory)  // Display the available weapons for the player to choose
             {
                 Console.WriteLine($"{index}. {weapon.Name} (+{weapon.ItemPower})");
                 index++;
             }
 
-            // Prompts to change the item
-            Console.Write("Enter the number corresponding to the weapon you want to equip: ");
+            Console.Write("Enter the number corresponding to the weapon you want to equip: ");  // Prompts to change the item
             string choice = Console.ReadLine();
+
             // ChatGPT to find a solution to changing weapon
-            if (int.TryParse(choice, out int weaponIndex) && weaponIndex >= 1 && weaponIndex <= _weaponInventory.Count)
+            if (int.TryParse(choice, out int weaponIndex) && weaponIndex >= 1 && weaponIndex <= _weaponInventory.Count) // validation of item choice
             {
                 Weapon selectedWeapon = _weaponInventory.ElementAt(weaponIndex - 1);
-                _hero.EquipWeapon(selectedWeapon);
+                _hero.EquipWeapon(selectedWeapon); // Equip method in hero class
             }
             else
             {
@@ -130,8 +129,8 @@ namespace Classes
 
             // Keeps the fight going until win or lose condition is hit
             Fight fight = new Fight(_hero, monster);
-            bool fightInProgress = true;
 
+            bool fightInProgress = true;
             while (fightInProgress)
             {
                 fight.HeroTurn();
@@ -155,11 +154,11 @@ namespace Classes
                 // Displays Menu
                 Console.WriteLine();
                 Console.WriteLine("Main Menu");
-                Console.WriteLine("1. Display Statistics");
-                Console.WriteLine("2. Display Inventory");
+                Console.WriteLine("1. Hero Stats");
+                Console.WriteLine("2. Item Inventory");
                 Console.WriteLine("3. Change Equipped Weapon");
                 Console.WriteLine("4. Change Equipped Armor");
-                Console.WriteLine("5. Fight");
+                Console.WriteLine("5. Fight a monster");
                 Console.WriteLine("6. Exit Game");
 
                 // Prompts User input

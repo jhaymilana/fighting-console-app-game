@@ -9,32 +9,32 @@ namespace Classes
     public class Fight
     {
         // Fields
-        private Hero hero;
-        private Monster monster;
+        private Hero _hero;
+        private Monster _monster;
 
         // Properties
 
         // Methods
         public void HeroTurn() // Damage Calculations for hero damage
         {
-            int damage = hero.Strength + hero.Weapon.ItemPower - monster.Defence;
-            monster.CurrentHealth -= damage;
-            Console.WriteLine($"Hero attacks the {monster.Name} and deals {damage} damage!");
+            int damage = _hero.Strength + _hero.Weapon.ItemPower - _monster.Defence;
+            _monster.CurrentHealth -= damage;
+            Console.WriteLine($"Hero attacks the {_monster.Name} and deals {damage} damage!");
         }
 
         public void MonsterTurn() // Damage calculations for monster damage
         {
-            int damage = monster.Strength - (hero.Defence + hero.Armor.ItemPower);
-            hero.CurrentHealth -= damage;
-            Console.WriteLine($"{monster.Name} attacks the hero and deals {damage} damage!");
+            int damage = _monster.Strength - (_hero.Defence + _hero.Armor.ItemPower);
+            _hero.CurrentHealth -= damage;
+            Console.WriteLine($"{_monster.Name} attacks the hero and deals {damage} damage!");
         }
 
         // Win and lose condition statements based on hero hp
         public bool Win()
         {
-            if (monster.CurrentHealth <= 0)
+            if (_monster.CurrentHealth <= 0)
             {
-                Console.WriteLine($"The hero defeats the {monster.Name}!");
+                Console.WriteLine($"The hero defeats the {_monster.Name}!");
                 return true;
             }
             return false;
@@ -42,10 +42,10 @@ namespace Classes
 
         public bool Lose()
         {
-            if (hero.CurrentHealth <= 0)
+            if (_hero.CurrentHealth <= 0)
             {
-                Console.WriteLine($"The hero is defeated by the {monster.Name}!");
-                hero.CurrentHealth = hero.Health;
+                Console.WriteLine($"The hero is defeated by the {_monster.Name}!");
+                _hero.CurrentHealth = _hero.Health;
                 return true;
             }
             return false;
@@ -54,8 +54,8 @@ namespace Classes
         // Constructor
         public Fight(Hero hero, Monster monster)
         {
-            this.hero = hero;
-            this.monster = monster;
+            _hero = hero;
+            _monster = monster;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    public class Items
+    public abstract class Items
     {
         // Fields
         private string _name;
